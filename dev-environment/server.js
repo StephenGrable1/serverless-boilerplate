@@ -13,10 +13,6 @@ app.get("/bundle.js", function(req, res) {
   });
 });
 
-app.get("/dev/x/shop", function(req, res) {
-  res.sendFile(path.join(__dirname + "/index.html"));
-});
-
 app.get("/dev/x/:mediaFile", function(req, res) {
   res.sendFile(`./static/bundle/media/${req.params.mediaFile}`, {
     root: "./"
