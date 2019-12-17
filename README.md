@@ -49,6 +49,8 @@ This boilerplate has a `/global-variables` file where you can store the base url
 
 This allows you to easily move the project and endpoints to another location by defining the base path and other important endpoints in one place.
 
+This means you can get the baseURL anywhere within the frontend React code like this `utils.baseAPI`.
+
 ### Advantages 📈
 
 There are many advantages of using an architecture like this.
