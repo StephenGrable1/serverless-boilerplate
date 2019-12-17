@@ -108,12 +108,12 @@ module.exports.handler = async function(event, context, callback) {
 
 Simple enough.
 
-Now onto the API Gateway configuration.
+Now onto the API Gateway configuration. You may not need to do this manually as Serverless should handle this configuration. However, if your endpoints are returning CORS errors, you may need to manually follow the steps below.
 
-In the API gateway dashboard, navigate to your API and click on "Resources". Now click on the endpoint that you posting to above, in this example it's , and click the OPTIONS from the dropdown.
+In the API gateway dashboard, navigate to your API and click on "Resources".
 
 1.  Find your API Resources List.
-1.  Go into `OPTIONS` for the endpoint you are working with for this example it's `/payment-processing`.
+1.  Go into `OPTIONS` for the endpoint you are working with; for this example it's `/payment-processing`.
 1.  Click `Method Request` in the execution view.
 1.  Dropdown in `Request Body`: `Content type` : `application/json` and `Model name` : `Empty`.
 1.  Now click "<- Method Execution" and go back to main view.
