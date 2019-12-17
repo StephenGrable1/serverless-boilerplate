@@ -1,17 +1,17 @@
 # Serverless Boilerplate
 
-### Setup
+### Setup 🏁
 
 1. Install your node dependencies, run `npm install`.
 1. Start up your development server by running `npm run dev`.
 1. Start up webpack watch process in another terminal by running `npm run watch`.
 1. Navigate to `http://localhost:5000/` and you should see the frontend React components rendering successfully.
 
-### Test Suite
+### Test Suite ✅
 
 1. To kick off the test suite run `npm run test`.
 
-### Deploy Process
+### Deploy Process 🕹️
 
 This repository leverages the [Serverless Framework](https://github.com/serverless/serverless). You can deploy this application to a live endpoint with this simple command `sls deploy`. You may need to first enter your platform credentials for this to deploy successfully.
 
@@ -21,13 +21,13 @@ Here we utilize AWS exclusively, but you can switch these AWS Lambda functions o
 
 View more [Serverless commands here](https://serverless.com/framework/docs/providers/aws/cli-reference/deploy/).
 
-### Deploy To AWS
+### Deploy To AWS ☁️
 
 1. Run `sls deploy`.
 1. Enter your AWS Credentials if you are prompted to do so.
 1. Serverless will then deploy your app to AWS and will output a live URL you can navigate to and view your app.
 
-### Architecture
+### Architecture 🏘️
 
 #### Frontend
 
@@ -43,13 +43,13 @@ All of our Lambda functions live in the root `/functions` folder.
 
 The functions supplied within this boilerplate cover all of the neccessary abilities needed for the initial rendering of our frontend React App on a live endpoint.
 
-#### Globals
+#### Globals 🌎
 
 This boilerplate has a `/global-variables` file where you can store the base url endpoint for AWS API Gateway.
 
 This allows you to easily move the project and endpoints to another location by defining the base path and other important endpoints in one place.
 
-### Advantages
+### Advantages 📈
 
 There are many advantages of using an architecture like this.
 
@@ -65,7 +65,7 @@ Flexibility.
 
 This architecture is inherently flexible. You can decouple the frontend and backend very easily and even spin up a completely new staging environment to test out a new endpoint. The Serverless Framework has some very handy commands that make this possible by leveraging AWS's sprawling ecosystem of products.
 
-### CORS Troubleshooting With Lambdas
+### CORS Troubleshooting With Lambdas 🏹
 
 I'm documenting cors here because someone... somewhere will run into this issue again.
 
