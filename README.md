@@ -1,4 +1,4 @@
-# Serverless Boilerplate
+# Serverless Boilerplate 🏎️
 
 ### Setup 🏁
 
