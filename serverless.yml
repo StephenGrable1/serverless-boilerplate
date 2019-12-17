@@ -1,0 +1,109 @@
+# NOTE
+# Keep api secrets stored in aws's system manager parameter store
+# https://console.aws.amazon.com/systems-manager/parameters
+
+service: serverless-boilerplate # NOTE: update this with your service name
+
+package:
+  exclude:
+    - src/**
+
+plugins:
+  - serverless-pseudo-parameters
+  - serverless-plugin-include-dependencies
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  timeout: 30
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "dynamodb-table-rn-here"
+    - Effect: "Allow"
+      Action:
+        - "s3:PutObject"
+        - "s3:GetObject"
+      Resource: "arn:aws:s3:::your-s3-bucket/*"
+    - Effect: "Allow"
+      Action:
+        - "lambda:InvokeFunction"
+      Resource: "*"
+
+functions:
+  get-index:
+    handler: functions/get-asset-endpoints/get-index.handler
+    events:
+      - http:
+          path: /
+          method: get
+    environment:
+      root: "https://root-url-here.com/dev/"
+
+  get-proxy-base-route:
+    handler: functions/get-asset-endpoints/get-proxy-base-route.handler
+    events:
+      - http:
+          path: /{proxy+}
+          method: get
+    environment:
+      root: "https://your-root-url.com/"
+
+  get-react-refresh:
+    handler: functions/get-asset-endpoints/get-react-refresh.handler
+    events:
+      - http:
+          path: /dev/{proxy+}
+          method: get
+    environment:
+      root: "https://your-root-url.com/"
+
+  get-react-refresh-dev:
+    handler: functions/get-asset-endpoints/get-react-refresh.handler
+    events:
+      - http:
+          path: /dev
+          method: get
+    environment:
+      root: "https://your-root-url.com/"
+
+  get-js:
+    handler: functions/get-asset-endpoints/get-js.handler
+    events:
+      - http:
+          path: /js
+          method: get
+
+  get-image:
+    handler: functions/get-asset-endpoints/get-image.handler
+    events:
+      - http:
+          path: /media/{proxy+}
+          method: get
+
+  get-favicon:
+    handler: functions/get-asset-endpoints/get-favicon.handler
+    events:
+      - http:
+          path: /favicons/{proxy+}
+          method: get
+
+  get-bundle-js:
+    handler: functions/get-asset-endpoints/get-bundle-js.handler
+    events:
+      - http:
+          path: /bundle-js
+          method: get
+
+  get-css:
+    handler: functions/get-asset-endpoints/get-css.handler
+    events:
+      - http:
+          path: /css
+          method: get
